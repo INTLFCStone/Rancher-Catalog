@@ -1,0 +1,16 @@
+.catalog:
+  name: "Elasticsearch"
+  version: "5-rancher1"
+  description: "Elasticsearch. You know, for search"
+  uuid: elasticsearchfive-jeffk-0
+logstash:
+  scale: 1
+  start_on_create: true
+logspout:
+  start_on_create: true
+elasticsearch-clients:
+  scale: 1
+  start_on_create: true
+kibana:
+  scale: 1
+  start_on_create: true

@@ -1,0 +1,8 @@
+name: Elasticsearch 5.x
+description: |
+  Elasticsearch, you know for search!
+version: 1.0.0.0
+category: ELK
+maintainer: "Jeff Kolb <jeff.kolb@intlfcstone.com>"
+minimum_rancher_version: v1.2.3
+projectURL: https://www.elastic.co/

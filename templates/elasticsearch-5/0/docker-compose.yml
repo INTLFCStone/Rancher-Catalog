@@ -1,0 +1,71 @@
+version: '2'
+services:
+  logstash:
+    image: logstash:5
+    volumes:
+    - /etc/logstash/conf.d
+    links:
+    - elasticsearch-clients:elasticsearch
+    ports:
+    - 5000:5000/tcp
+    - 6000:6000/tcp
+    command:
+    - -f
+    - /etc/logstash/conf.d/
+    - --config.string
+    - input { udp { port => 5000 codec => "json" } tcp { port => 6000 codec => "json" } } output { elasticsearch { hosts => "elasticsearch:9200"} }
+    labels:
+      io.rancher.container.hostname_override: container_name
+  logspout:
+    image: bekt/logspout-logstash:latest
+    environment:
+      LOGSPOUT: ignore
+      ROUTE_URIS: logstash+tcp://logstash:6000
+    stdin_open: true
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    tty: true
+    links:
+    - logstash:logstash
+    labels:
+      io.rancher.scheduler.global: 'true'
+      io.rancher.container.hostname_override: container_name
+  elasticsearch-clients:
+    cap_add:
+    - IPC_LOCK
+    image: elasticsearch:5
+    environment:
+      ES_JAVA_OPTS: -Xms1g -Xmx1g -Des.path.conf=/usr/share/elasticsearch/config
+      cluster.name: elasticsearch
+      discovery.zen.minimum_master_nodes: '1'
+      discovery.zen.ping.unicast.hosts: elasticsearch-clients
+      network.host: 0.0.0.0
+    ulimits:
+      memlock:
+        hard: -1
+        soft: -1
+      nofile:
+        hard: 65536
+        soft: 65536
+    volumes:
+    - /usr/share/elasticsearch/config
+    - /usr/share/elasticsearch/data
+    ports:
+    - 9200:9200/tcp
+    - 9300:9300/tcp
+    labels:
+      io.rancher.container.hostname_override: container_name
+  kibana:
+    image: kibana:5
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      SERVER_HOST: 0.0.0.0
+      SERVER_PORT: '5601'
+    volumes:
+    - /etc/kibana/
+    links:
+    - elasticsearch-clients:elasticsearch
+    ports:
+    - 5601:5601/tcp
+    labels:
+      io.rancher.container.hostname_override: container_name
