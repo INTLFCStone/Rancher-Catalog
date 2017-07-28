@@ -1,5 +1,5 @@
 name: RethinkDB Cluster
 description: |
-  (Experimental) NoSQL-Database
+  The open-source database for the realtime web
 version: 2.3.5
 category: Databases
