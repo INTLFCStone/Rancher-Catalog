@@ -1,10 +1,10 @@
 .catalog:
   name: Kafka
-  version: 0.10.0.1-rancher1
+  version: 0.10.2.1-rancher3
   description: |
-    (Experimental) Apache Kafka cluster.
-  minimum_rancher_version: v0.59.0
-  maintainer: "Raul Sanchez <rawmind@gmail.com>"
+    (Experimental) Apache Kafka cluster - JEFFK.
+  minimum_rancher_version: v1.6.0
+  maintainer: "Jeff Kolb <jeff.kolb@intlfcstone.com>"
   uuid: kafka-0
   questions:
     - variable: "kafka_scale"
@@ -62,6 +62,23 @@
       options:
         - false
         - true
+    - variable: "enable_jmx"
+      description: "Enable JMX" 
+      label: "Enable JMX on the appropriate interface"
+      default: false
+      required: true
+      type: enum
+      options:
+        - false
+        - true  
+    - variable: "jmx_port"
+      description: |
+        This must be set if you would like to connect JMX agents to brokers
+        If you set this, it will be exposed on broker containers (ex. 9999:9999).
+      label: "JMX Port:"
+      required: false
+      default: ""
+      type: "string"
     - variable: "zk_link"
       description: |
         Choose the Zookeeper service to use. 
@@ -70,6 +87,28 @@
       default: "kafka-zk/zk"
       required: true
       type: "service"
+    - variable: "app_secret"
+      description: "Application secret"
+      label: "Application secret"
+      required: true
+      default: "letmein"
+      type: "string"
+    - variable: "km_args"
+      description: "JVM arguments - Do not change this unless you know what you are doing!"
+      label: "JVM arguments:"
+      required: false
+      default: "-Djava.net.preferIPv4Stack=true"
+      type: "string"
+    - variable: "volume_driver"
+      description: "Volume driver to use for the Kafka Broker volume."
+      label: "Driver:"
+      required: true
+      default: "local"
+      type: "enum"
+      options:
+        - local
+        - rancher-nfs
+
 broker:
   scale: ${kafka_scale}
   retain_ip: true
@@ -80,4 +119,15 @@ broker:
     request_line: ''
     healthy_threshold: 2
     response_timeout: 5000
+kafka-manager:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 9000
+    interval: 30000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2
+
 

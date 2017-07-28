@@ -1,4 +1,4 @@
-# Apache Kafka (Experimental)
+# Kafka cluster including Kafka Manager
 
 ### Info:
 
@@ -22,6 +22,9 @@
 - kafka_delete_topics="false"			# kafka delete topics
 - kafka_pub_ip= < true | false >		# Advertise public ip to zookeeper.
 - zk_link="kafka-zk/zk" 				# zookeeper stack/service to connect to.
+- enable_jmx= < true | false >			# Set this is you want to enable JMX on the broker containers.
+- jmx_port="Blank by default"			# (optional but must be set if JMX is enabled) Port to open for remote JMX connections
+- jmx_port="Blank by default"			# Volume driver to use for Kafka brokers
  
  Click deploy.
  

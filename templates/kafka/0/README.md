@@ -1,21 +1,32 @@
-# Apache Kafka (Experimental)
-
+# Apache Kafka (Experimental) JEFFK
 
 ### Info:
 
- This template creates, scale in and scale out a multinodes broker (kafka) cluster on top of Rancher. The configuration is generated with confd from Rancher metadata. 
- Cluster size are variable after deployment, and get reconfigured if refresh interval > 0.
+ This template creates, scale in and scale out a multinodes kafka broker cluster on top of Rancher. The configuration is generated with confd from Rancher metadata. 
+ Cluster size are variable after deployment, and get reconfigured after refresh interval.
  
  
 ### Usage:
 
  Select Apache Kafka from catalog. 
  
- Enter the number of nodes, mem, refresh interval broker cluster and zookeeper service to connect. (set refresh data to 0 to disable dinamic config)
+ Enter the number of nodes, mem and refresh interval for the kafka cluster.
+ 
+ Change the following kafka default parameters, if you need:
 
- Note: When you scale the cluster, zero downtime is not guaranteed..yet..
+- kafka_scale=3							# kafka scale to deploy.
+- kafka_mem=512							# kafka broker memory.
+- kafka_log_dir="/opt/kafka/logs"		# Kafka log dir.
+- kafka_log_retention="168"				# kafka log retention. 
+- kafka_num_partitions="1"				# Kafka partitions number
+- kafka_delete_topics="false"			# kafka delete topics
+- kafka_pub_ip= < true | false >		# Advertise public ip to zookeeper.
+- zk_link="kafka-zk/zk" 				# zookeeper stack/service to connect to.
+- enable_jmx= < true | false >			# Set this is you want to enable JMX on the broker containers.
+- jmx_port="Blank by default"			# (optional but must be set if JMX is enabled) Port to open for remote JMX connections
  
  Click deploy.
  
  Kafka can now be accessed over the Rancher network. 
 
+ Note: When you scale the cluster, zero downtime is not guaranteed..yet..
