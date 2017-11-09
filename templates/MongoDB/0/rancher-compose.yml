@@ -17,13 +17,7 @@ catalog:
         - rancher-nfs
         - rancher-efs
         - rancher-ebs
-mongo:
-  scale: 1
-  retain_ip: true
-  health_check:
-  port: 27017
-  interval: 30000
-  unhealthy_threshold: 3
-  request_line: ''
-  healthy_threshold: 2
-  response_timeout: 5000
+services:
+  mongo:
+    scale: 1
+    start_on_create: true
