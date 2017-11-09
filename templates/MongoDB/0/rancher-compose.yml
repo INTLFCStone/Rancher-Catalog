@@ -1,9 +1,7 @@
-version: '2'
-catalog:
+.catalog:
   name: "MongoDB"
   version: "3.4-rancher1"
   description: "MongoDB Single Server"
-  uuid: mongodb-1
   minimum_rancher_version: v1.6.0
   questions:
     - variable: "VOLUME_DRIVER"
@@ -17,7 +15,6 @@ catalog:
         - rancher-nfs
         - rancher-efs
         - rancher-ebs
-services:
-  mongo:
-    scale: 1
-    start_on_create: true
+mongo:
+  scale: 1
+  start_on_create: true
