@@ -1,5 +1,5 @@
 name: MongoDB
 description: |
-  MongoDB Single Server.
-version: "rancher"
+  MongoDB Replica Set.
+version: "3.4-rancher1"
 category: Databases
