@@ -24,5 +24,4 @@ mongo:
     interval: 15000
     unhealthy_threshold: 3
     healthy_threshold: 2
-    strategy: recreate
     response_timeout: 2000
