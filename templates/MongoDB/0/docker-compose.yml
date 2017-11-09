@@ -1,9 +1,7 @@
 version: '2'
 services:
-  mongo-cluster:
+  mongo:
     restart: always
-    environment:
-      MONGO_SERVICE_NAME: mongo-cluster
     image: mongo:3.4
     labels:
       io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
