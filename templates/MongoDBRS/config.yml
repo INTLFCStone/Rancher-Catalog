@@ -1,4 +1,4 @@
-name: MongoDB
+name: MongoDB Replica Set
 description: |
   MongoDB Replica Set.
 version: "3.4-rancher1"
