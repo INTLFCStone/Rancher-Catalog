@@ -20,12 +20,9 @@ mongo:
   start_on_create: true
   retain_ip: true
   health_check:
-  port: 27017
-  # Interval is measured in milliseconds
-  interval: 15000
-  initializing_timeout: 30000
-  unhealthy_threshold: 3
-  strategy: recreate
-  healthy_threshold: 2
-  # Response timeout is measured in milliseconds
-  response_timeout: 2000
+    port: 27017
+    interval: 15000
+    unhealthy_threshold: 3
+    healthy_threshold: 2
+    strategy: recreate
+    response_timeout: 2000
