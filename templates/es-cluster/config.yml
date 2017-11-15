@@ -1,5 +1,5 @@
-name: Elasticsearch Cluster 5.x
+name: Elasticsearch Cluster
 description: |
   Elasticsearch, you know for search!
-version: 5.5
+version: 1.0
 category: ELK
