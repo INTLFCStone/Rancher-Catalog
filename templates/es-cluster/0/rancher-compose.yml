@@ -1,7 +1,7 @@
 version: '2'
 catalog:
     name: Elasticsearch Cluster
-    version: 5.5.1
+    version: 5.6.4
     description: Scalable Elasticsearch Cluster
 
     questions:
@@ -17,16 +17,6 @@ catalog:
           description: |
             Set true to avoid vm.max_map_count errors.
             WARN: If set true, host param vm.max_map_count will be update to 262144.
-          default: false
-          required: true
-          type: enum
-          options:
-            - false
-            - true
-        - variable: "INCLUDE_KIBANA"
-          label: "Include kibana:"
-          description: |
-            Set true to deploy a linked Kibana instance as well.
           default: false
           required: true
           type: enum
