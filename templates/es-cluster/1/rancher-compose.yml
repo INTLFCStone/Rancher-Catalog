@@ -23,16 +23,17 @@ catalog:
           options:
             - false
             - true
+
         - variable: "INCLUDE_KIBANA"
           label: "Include kibana:"
           description: |
             Set true to deploy a linked Kibana instance as well.
-          default: false
+          default: true
           required: true
           type: enum
           options:
-            - false
             - true
+            - false
 
         - variable: "master_heap_size"
           type: "string"
