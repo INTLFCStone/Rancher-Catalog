@@ -1,7 +1,7 @@
 version: '2'
 catalog:
     name: Elasticsearch Cluster
-    version: 5.5.1
+    version: 5.6.4
     description: Scalable Elasticsearch Cluster
 
     questions:
