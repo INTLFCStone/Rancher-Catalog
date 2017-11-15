@@ -12,7 +12,7 @@ catalog:
           description: "Name of the Elasticsearch Cluster"
           default: "es-cluster"
 
-          - variable: "USE_XPACK_SECURITY"
+        - variable: "USE_XPACK_SECURITY"
           label: "Use x-pack security:"
           description: |
             Use x-pack security - this currently does nothing.
