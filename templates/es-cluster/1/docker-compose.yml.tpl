@@ -122,8 +122,8 @@ services:
         environment:
             - "ELASTICSEARCH_URL=http://es-client:9200"
             - "xpack.security.enabled=false"
-    external_links:
-    - es-client:es-client
+        external_links:
+            - es-client:es-client
     {{- end}}
 
 volumes:
