@@ -17,7 +17,6 @@ catalog:
           description: |
             Include Cerebro administration.
           default: true
-          required: true
           type: boolean
 
         - variable: "UPDATE_SYSCTL"
@@ -26,7 +25,6 @@ catalog:
             Set true to avoid vm.max_map_count errors.
             WARN: If set true, host param vm.max_map_count will be update to 262144.
           default: false
-          required: true
           type: boolean
 
         - variable: "INCLUDE_KIBANA"
@@ -34,7 +32,6 @@ catalog:
           description: |
             Set true to deploy a linked Kibana instance as well.
           default: true
-          required: true
           type: boolean
 
         - variable: "master_heap_size"
