@@ -19,10 +19,7 @@ catalog:
             WARN: If set true, host param vm.max_map_count will be update to 262144.
           default: false
           required: true
-          type: enum
-          options:
-            - false
-            - true
+          type: boolean
 
         - variable: "INCLUDE_KIBANA"
           label: "Include kibana:"
@@ -30,10 +27,7 @@ catalog:
             Set true to deploy a linked Kibana instance as well.
           default: true
           required: true
-          type: enum
-          options:
-            - true
-            - false
+          type: boolean
 
         - variable: "master_heap_size"
           type: "string"
