@@ -30,7 +30,7 @@ catalog:
           type: boolean
 
         - variable: "INCLUDE_KIBANA"
-          label: "Include kibana:"
+          label: "Include Kibana:"
           description: |
             Set true to deploy a linked Kibana instance as well.
           default: true
