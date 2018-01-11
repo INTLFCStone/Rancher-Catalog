@@ -1,0 +1,46 @@
+.catalog:
+  name: Influxdb
+  description: |
+    Influxdb
+  version: 1.4.2-rancher1
+  minimum_rancher_version: v1.0.0
+  maintainer: "Jeff Kolb <jeff.kolb@intlfcstone.com>"
+  uuid: influxdb-0
+  questions:
+    - variable: "EXPOSE_SERVICE"
+      description: "Expose Influxdb"
+      label: "Expose influxdb:"
+      required: true
+      type: enum
+      default: "true"
+      options:
+        - "true"
+        - "false"
+    - variable: "VOLUME_DRIVER"
+      description: "Volume driver to use"
+      label: "Driver:"
+      required: true
+      type: enum
+      default: "local"
+      options:
+        - "local"
+        - "rancher-nfs"
+    - variable: "influxdb_port"
+      description: |
+        Port to expose. 
+      label: "Influxdb port:"
+      default: "8086"
+      required: true
+      type: "int"
+version: '2'
+services:
+  influxdb:
+    scale: 1
+    start_on_create: true
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 8086
+      unhealthy_threshold: 3
+      interval: 2000
+
