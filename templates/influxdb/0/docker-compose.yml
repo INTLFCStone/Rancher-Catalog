@@ -40,7 +40,7 @@ services:
       io.rancher.sidekicks: grafana-data
     external_links:
     - influxdb:influxdb
-    volumes:
+    volumes_from:
       - grafana-data
   grafana-data:
     image: rawmind/alpine-volume:0.0.2-2
