@@ -33,6 +33,8 @@ services:
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
       io.rancher.sidekicks: grafana-data,grafana-config
+     external_links:
+    - influxdb:influxdb
     volumes_from:
       - grafana-data
       - grafana-config
