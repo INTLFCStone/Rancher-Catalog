@@ -32,13 +32,13 @@ services:
     labels:
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
-      io.rancher.sidekicks: grafana-data,grafana-config
+      io.rancher.sidekicks: grafana_data,grafana_config
      external_links:
     - influxdb:influxdb
     volumes_from:
-      - grafana-data
-      - grafana-config
-  grafana-data:
+      - grafana_data
+      - grafana_config
+  grafana_data:
     network_mode: "none"
     labels:
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
@@ -52,7 +52,7 @@ services:
       - grafana-data:/usr/lib/influxdb
     volume_driver: ${VOLUME_DRIVER}
     image: rawmind/alpine-volume:0.0.2-2
-  grafana-config:
+  grafana_config:
     network_mode: "none"
     labels:
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
