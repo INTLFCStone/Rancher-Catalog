@@ -53,6 +53,6 @@ services:
       - SERVICE_GID=107
       - SERVICE_VOLUME=/usr/lib/grafana
     volumes:
-      - grafana-data:/usr/lib/influxdb
+      - $${stack_name}-$${service_name}:/usr/lib/influxdb
     volume_driver: ${VOLUME_DRIVER}
     image: rawmind/alpine-volume:0.0.2-2
