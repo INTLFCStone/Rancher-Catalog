@@ -51,7 +51,7 @@ services:
     environment:
       - SERVICE_UID=104
       - SERVICE_GID=107
-      - SERVICE_VOLUME=/usr/lib/grafana
+      - SERVICE_VOLUME=/var/lib/grafana
     volumes:
       - grafdata:/var/lib/grafana
 volumes:
