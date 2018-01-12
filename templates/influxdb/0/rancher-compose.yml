@@ -5,7 +5,6 @@
   version: 1.4.2-rancher1
   minimum_rancher_version: v1.0.0
   maintainer: "Jeff Kolb <jeff.kolb@intlfcstone.com>"
-  uuid: influxdb-0
   questions:
     - variable: "VOLUME_DRIVER"
       description: "Volume driver to use"
