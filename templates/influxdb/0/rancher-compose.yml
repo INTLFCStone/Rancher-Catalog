@@ -1,5 +1,5 @@
 .catalog:
-  name: Influxdb
+  name: Monitoring
   description: |
     Influxdb
   version: 1.4.2-rancher1
