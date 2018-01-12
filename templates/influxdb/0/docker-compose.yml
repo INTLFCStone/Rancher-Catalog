@@ -21,7 +21,45 @@ services:
       - SERVICE_GID=0
       - SERVICE_VOLUME=/var/lib/influxdb
     volumes:
-      - /var/lib/influxdb
+      - influxdb_data:/var/lib/influxdb
     volume_driver: ${VOLUME_DRIVER}
     image: rawmind/alpine-volume:0.0.2-2
 
+  grafana:
+    image: grafana/grafana:4.6.3
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.container.hostname_override: container_name
+      io.rancher.sidekicks: grafana-data,grafana-config
+    volumes_from:
+      - grafana-data,gravana-config
+  grafana-data:
+    network_mode: "none"
+    labels:
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.start_once: true
+    environment:
+      - SERVICE_UID=104
+      - SERVICE_GID=107
+      - SERVICE_VOLUME=/usr/lib/grafana
+    volumes:
+      - grafana_data:/usr/lib/influxdb
+    volume_driver: ${VOLUME_DRIVER}
+    image: rawmind/alpine-volume:0.0.2-2
+  grafana-config:
+    network_mode: "none"
+    labels:
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.start_once: true
+    environment:
+      - SERVICE_UID=104
+      - SERVICE_GID=107
+      - SERVICE_VOLUME=/etc/grafana
+    volumes:
+      - grafana_config:/etc/grafana
+    volume_driver: ${VOLUME_DRIVER}
+    image: rawmind/alpine-volume:0.0.2-2

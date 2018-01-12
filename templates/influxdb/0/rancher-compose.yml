@@ -27,4 +27,12 @@ services:
       port: 8086
       unhealthy_threshold: 3
       interval: 2000
-
+  grafana:
+    scale: 1
+    start_on_create: true
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 3000
+      unhealthy_threshold: 3
+      interval: 5000

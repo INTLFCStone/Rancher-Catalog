@@ -1,6 +1,6 @@
-name: Influxdb
+name: InfluxDB
 description: |
-  Influxdb 
+  InfluxDB + Grafana
 version: 1.4.2-rancher1
 category: Databases
 maintainer: "Jeff Kolb <jeff.kolb@intlfcstone.com>"
