@@ -40,9 +40,10 @@ services:
       io.rancher.sidekicks: grafana-data
     external_links:
     - influxdb:influxdb
-    volumes_from:
+    volumes:
       - grafana-data
   grafana-data:
+    image: rawmind/alpine-volume:0.0.2-2
     network_mode: "none"
     labels:
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
@@ -53,6 +54,9 @@ services:
       - SERVICE_GID=107
       - SERVICE_VOLUME=/usr/lib/grafana
     volumes:
-      - $${stack_name}-$${service_name}:/usr/lib/influxdb
-    volume_driver: ${VOLUME_DRIVER}
-    image: rawmind/alpine-volume:0.0.2-2
+      - grafanadata:/usr/lib/influxdb
+volumes:
+  grafanadata:
+    driver: ${VOLUME_DRIVER}
+    per_container: true
+
