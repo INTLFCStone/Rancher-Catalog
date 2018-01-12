@@ -36,8 +36,8 @@ services:
     external_links:
     - influxdb:influxdb
     volumes_from:
-      - grafana_data
-      - grafana_config
+      - grafana-data
+      - grafana-config
   grafana-data:
     network_mode: "none"
     labels:
