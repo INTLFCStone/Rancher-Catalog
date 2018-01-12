@@ -1,4 +1,4 @@
-name: InfluxDB Windows
+name: WindowsMonitoring
 description: |
   InfluxDB + Grafana
 version: 1.4.2-rancher1
