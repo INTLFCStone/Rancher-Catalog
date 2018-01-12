@@ -12,7 +12,7 @@
       label: "Driver:"
       required: true
       type: enum
-      default: "local"
+      default: "rancher-nfs"
       options:
         - "local"
         - "rancher-nfs"
