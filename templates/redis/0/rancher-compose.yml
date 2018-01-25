@@ -1,6 +1,6 @@
 .catalog:
   name: "Redis"
-  version: "1.0.0"
+  version: "4.0.7"
   description: "A cluster of Redis instances for High Availability on Rancher"
   minimum_rancher_version: v1.6.0
 version: '2'

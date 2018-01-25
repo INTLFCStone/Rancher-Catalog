@@ -1,7 +1,7 @@
 version: '2'
 services:
   redis-sentinel:
-    image: ahfeel/rancher-redis-cluster-sentinel
+    image: intlfcstone/rancher-redis-cluster-sentinel:4.0.7
     environment:
       SENTINEL_DOWN_AFTER_MILLISECONDS: '5000'
     stdin_open: true
@@ -14,7 +14,7 @@ services:
     sysctls:
       net.core.somaxconn: "511"
   redis-server:
-    image: ahfeel/rancher-redis-cluster-node
+    image: intlfcstone/rancher-redis-cluster-node:4.0.7
     stdin_open: true
     volumes:
     - /data/redis:/data
