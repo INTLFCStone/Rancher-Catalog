@@ -8,7 +8,6 @@ The redis-sentinel image (ahfeel/rancher-redis-cluster-sentinel on Docker hub) s
 
 *Warning: The Redis Instances are actually running in a Master/Slave mode, not a Multi Master Redis Cluster*
 
-![Rancher Redis Cluster Screenshot](/screen.png?raw=true "Rancher Redis Cluster Screenshot")
 
 ## Optional environment variables:
 
