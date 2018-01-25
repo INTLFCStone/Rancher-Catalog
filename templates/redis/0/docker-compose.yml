@@ -1,0 +1,33 @@
+version: '2'
+services:
+  redis-sentinel:
+    image: ahfeel/rancher-redis-cluster-sentinel
+    environment:
+      SENTINEL_DOWN_AFTER_MILLISECONDS: '5000'
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.agent.role: environment
+      io.rancher.scheduler.affinity:container_label_ne: redis-sentinel=1
+      redis-sentinel: '1'
+      io.rancher.container.start_once: 'true'
+      io.rancher.container.create_agent: 'true'
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.pull_image: always
+    sysctls:
+      net.core.somaxconn: "511"
+  redis-server:
+    image: ahfeel/rancher-redis-cluster-node
+    stdin_open: true
+    volumes:
+    - /data/redis:/data
+    tty: true
+    labels:
+      io.rancher.scheduler.affinity:container_label_ne: redis-server=1
+      io.rancher.scheduler.affinity:host_label: db=1
+      io.rancher.container.start_once: 'true'
+      io.rancher.container.hostname_override: container_name
+      redis-server: '1'
+      io.rancher.container.pull_image: always
+    sysctls:
+      net.core.somaxconn: "511"
