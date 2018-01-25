@@ -8,7 +8,6 @@ services:
     tty: true
     labels:
       io.rancher.container.agent.role: environment
-      io.rancher.container.start_once: 'true'
       io.rancher.container.create_agent: 'true'
       io.rancher.container.hostname_override: container_name
       io.rancher.container.pull_image: always
@@ -21,7 +20,6 @@ services:
     - /data/redis:/data
     tty: true
     labels:
-      io.rancher.container.start_once: 'true'
       io.rancher.container.hostname_override: container_name
       redis-server: '1'
       io.rancher.container.pull_image: always
