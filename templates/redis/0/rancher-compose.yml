@@ -1,3 +1,8 @@
+.catalog:
+  name: "Redis"
+  version: "1.0.0"
+  description: "A cluster of Redis instances for High Availability on Rancher"
+  minimum_rancher_version: v1.6.0
 version: '2'
 services:
   redis-sentinel:
