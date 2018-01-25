@@ -21,10 +21,8 @@ services:
     - /data/redis:/data
     tty: true
     labels:
-      io.rancher.scheduler.affinity:host_label: db=1
       io.rancher.container.start_once: 'true'
       io.rancher.container.hostname_override: container_name
-      redis-server: '1'
       io.rancher.container.pull_image: always
     sysctls:
       net.core.somaxconn: "511"
