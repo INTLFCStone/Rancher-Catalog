@@ -128,7 +128,7 @@ services:
     
     {{- if eq .Values.INCLUDE_CEREBRO "true" }}
     es-cerebro:
-        image: yannart/cerebro:0.6.6
+        image: yannart/cerebro:0.7.2
         external_links:
             - es-client:elasticsearch
     {{- end}}
