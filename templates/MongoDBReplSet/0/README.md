@@ -1,4 +1,4 @@
-# MongoDB Replica Set - EXPERIMENTAL
+# MongoDB Replica Set
 
 
 ### Info:
