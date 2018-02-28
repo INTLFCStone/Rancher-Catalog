@@ -1,0 +1,10 @@
+---
+name: MongoDB Sharded
+description: |
+  MongoDB Sharded Cluster
+version: v1.0.1
+category: Databases
+maintainer: Leonardo Gatica <lgatica@protonmail.com>
+projectURL: http://github.com/lgaticaq/mongo-sharded-rancher
+labels:
+  io.rancher.orchestration.supported: 'cattle,swarm'
