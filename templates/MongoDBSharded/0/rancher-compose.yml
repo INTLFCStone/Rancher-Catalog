@@ -1,7 +1,7 @@
 ---
 .catalog:
   name: "MongoDB Sharded"
-  version: "v1.0.1"
+  version: "v1.0.2"
   description: |
     MongoDB Sharded Cluster
   questions:
@@ -67,7 +67,7 @@
         host. Recommended 2.
       type: int
       required: true
-      default: 2
+      default: 3
     - variable: "CONFIGSVR_SCALE"
       label: "Configsvr Scale"
       description: |
@@ -106,29 +106,32 @@
       label: Volume path of mongod nodes (Optional)
       description: To store the mongod data.
       type: string
+      default: "${MONGOD_HOST_LABEL}"
       required: false
     - variable: ARBITER_VOLUME_PATH
       label: Volume path of arbiter nodes (Optional)
       description: To store the arbiter data.
       type: string
+      default: "${ARBITER_HOST_LABEL}"
       required: false
     - variable: CONFIGSVR_VOLUME_PATH
       label: Volume path of configsvr nodes (Optional)
       description: To store the configsvr data.
       type: string
+      default: "${CONFIGSVR_HOST_LABEL}"
       required: false
 
 version: '2'
 services:
   mongod:
     scale: ${MONGOD_SCALE}
-    start_on_create: true
+    start_on_create: false
     retain_ip: true
   configsvr:
     scale: ${CONFIGSVR_SCALE}
-    start_on_create: true
+    start_on_create: false
     retain_ip: true
   mongos:
     scale: 1
-    start_on_create: true
+    start_on_create: false
     retain_ip: true
