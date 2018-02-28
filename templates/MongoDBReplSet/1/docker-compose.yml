@@ -5,7 +5,7 @@ services:
     environment:
       MONGO_SERVICE_NAME: mongo-cluster
       CATTLE_SCRIPT_DEBUG: ${debug}
-      MONGO_INITDB_ROOT_PASSWORD: {MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
     entrypoint: /opt/rancher/bin/entrypoint.sh
     command:
