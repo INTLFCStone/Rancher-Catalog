@@ -36,7 +36,7 @@ catalog:
       type: "string"
       required: true
       default: "mongodb-node01:27017,mongodb-node02:27017,mongodb-node03:27017"
-      - variable: GRAYLOG_PASSWORD_SECRET
+    - variable: GRAYLOG_PASSWORD_SECRET
       description: |
         Secret to secure/pepper the stored user passwords - use at least 64 characters.
         You may generate it with pwgen -N 1 -s 96 or something similar
