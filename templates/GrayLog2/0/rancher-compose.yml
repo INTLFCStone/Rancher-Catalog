@@ -1,17 +1,19 @@
 version: '2'
 catalog:
-  name: "MongoDB"
+  name: "GrayLog"
   version: "3.4-rancher2"
-  description: "MongoDB Replica Set"
-  uuid: mongodb-1
+  description: "Graylog cluster"
+  uuid: graylogserver-2
   minimum_rancher_version: v1.6.10
   questions:
-    - variable: replset_name
-      description: "Name of the MongoDB replicaSet"
-      label: "ReplicaSet Name"
+    - variable: GRAYLOG_PASSWORD_SECRET
+      description: | 
+      Secret to secure/pepper the stored user passwords - use at least 64 characters
+      You may generate it with pwgen -N 1 -s 96 or something similar
+      label: "Password secret"
       type: "string"
       required: true
-      default: "rs0"
+      default: "somepasswordpepper"
     - variable: debug
       description: "Enable Debug log for Mongo containers"
       label: "Debug"
