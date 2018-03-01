@@ -12,7 +12,7 @@ services:
     external_links:
       - ${ES_LINK}:elasticsearch
       - ${ZK_LINK}:zk
-      - ${KK_LINK}:kafka
+      - ${KAFKA_LINK}:broker
     labels:
       io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
