@@ -74,19 +74,16 @@ catalog:
     - variable: "ES_LINK"
       description: "ElasticSearch ingestion node"
       label: "ElasticSearch Service"
-      default: "es-cluster/es-client"
       required: true
       type: "service"
     - variable: "ZK_LINK"
       description: "Zookeeper service - Provides intra-network connectivity to Zookeeper"
       label: "Zookeeper service(s)"
-      default: "zookeeper/zk"
       required: false
       type: "service"
     - variable: "KAFKA_LINK"
       description: "Kafka service - Provides intra-network connectivity to kafka"
       label: "Kafka broker service(s)"
-      default: "kafka/broker"
       required: false
       type: "service"
     - variable: cluster_size
