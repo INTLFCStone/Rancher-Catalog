@@ -1,6 +1,6 @@
 version: '2'
 services:
-  mongo-cluster:
+  graylog-server:
     restart: always
     environment:
       MONGO_SERVICE_NAME: mongo-cluster
