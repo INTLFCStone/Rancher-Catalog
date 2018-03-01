@@ -7,18 +7,36 @@ catalog:
   minimum_rancher_version: v1.6.10
   questions:
     - variable: "DB_USER"
-      description: "MongoDB Username for GrayLog to use"
-      label: "MongoDB username"
+      description: "Mongo Username for GrayLog to use"
+      label: "Mongo username"
       required: true
       default: "graylog"
       type: "string"
     - variable: "DB_PW"
-      description: "MongoDB password"
-      label: "MongoDB password"
+      description: "Mongo password"
+      label: "Mongo password"
       required: true
       default: "password"
       type: "string"
-    - variable: GRAYLOG_PASSWORD_SECRET
+    - variable: DB_NAME
+      description: "Mongo database"
+      label: "Mongo database to use"
+      type: "string"
+      required: true
+      default: "graylog"
+    - variable: RS_NAME
+      description: "Name of the replica set in mongo"
+      label: "Replica set name"
+      type: "string"
+      required: true
+      default: "rs01"
+    - variable: DB_URIS
+      description: "Comma-seperated list of mongodb locations:ports"
+      label: "DB Locations"
+      type: "string"
+      required: true
+      default: "mongodb-node01:27017,mongodb-node02:27017,mongodb-node03:27017"
+      - variable: GRAYLOG_PASSWORD_SECRET
       description: |
         Secret to secure/pepper the stored user passwords - use at least 64 characters.
         You may generate it with pwgen -N 1 -s 96 or something similar
@@ -60,6 +78,6 @@ catalog:
       required: true
       default: "3"
 services:
-  mongo-cluster:
+  graylog-server:
     scale: ${cluster_size}
 
