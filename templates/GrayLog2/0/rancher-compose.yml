@@ -7,9 +7,9 @@ catalog:
   minimum_rancher_version: v1.6.10
   questions:
     - variable: GRAYLOG_PASSWORD_SECRET
-      description: | 
-      Secret to secure/pepper the stored user passwords - use at least 64 characters
-      You may generate it with pwgen -N 1 -s 96 or something similar
+      description: |
+        Secret to secure/pepper the stored user passwords - use at least 64 characters
+        You may generate it with pwgen -N 1 -s 96 or something similar
       label: "Password secret"
       type: "string"
       required: true
