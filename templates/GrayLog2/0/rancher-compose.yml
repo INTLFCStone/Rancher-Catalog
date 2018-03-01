@@ -89,7 +89,6 @@ catalog:
       default: "kafka/broker"
       required: false
       type: "service"
-    
     - variable: cluster_size
       description: "Number of servers:"
       label: "Cluster size"
