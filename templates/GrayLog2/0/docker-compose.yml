@@ -6,8 +6,9 @@ services:
       GRAYLOG_MONGODB_URI: "mongodb://${DB_USER}:${DB_PW}@${DB_URIS}/${DB_NAME}?replicaSet=${RS_NAME}"
       GRAYLOG_PASSWORD_SECRET: ${GRAYLOG_PASSWORD_SECRET}
       GRAYLOG_ROOT_PASSWORD_SHA2: ${GRAYLOG_ROOT_PASSWORD_SHA2}
-      GRAYLOG_WEB_ENDPOINT_URI: ${GRAYLOG_WEB_ENDPOINT_URI}
+      GRAYLOG_REST_TRANSPORT_URI: ${GRAYLOG_REST_TRANSPORT_URI}
       GRAYLOG_ELASTICSEARCH_HOSTS: "http://elasticsearch:9200"
+      GRAYLOG_WEB_LISTEN_URI: "http://0.0.0.0:80/"
     image: intlfcstone/graylog-rancher:v2.4.3-1
     external_links:
       - ${ES_LINK}:elasticsearch
