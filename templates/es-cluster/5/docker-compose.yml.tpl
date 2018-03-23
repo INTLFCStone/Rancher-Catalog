@@ -28,7 +28,7 @@ services:
         cap_add:
             - IPC_LOCK
         volumes_from:
-            - es-storage
+            - es-master-storage
 
     es-data:
         labels:
@@ -57,7 +57,7 @@ services:
         cap_add:
             - IPC_LOCK
         volumes_from:
-            - es-storage
+            - es-data-storage
         depends_on:
             - es-master
 
@@ -88,7 +88,7 @@ services:
         cap_add:
             - IPC_LOCK
         volumes_from:
-            - es-storage
+            - es-client-storage
         depends_on:
             - es-master
 
