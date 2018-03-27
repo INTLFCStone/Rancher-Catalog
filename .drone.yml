@@ -1,6 +1,0 @@
----
-pipeline:
-  build:
-    image: rancher/dind:v0.6.0
-    commands:
-      - ./scripts/ci
