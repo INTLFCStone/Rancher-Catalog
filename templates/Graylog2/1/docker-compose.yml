@@ -9,7 +9,7 @@ services:
       GRAYLOG_REST_TRANSPORT_URI: ${GRAYLOG_REST_TRANSPORT_URI}
       GRAYLOG_ELASTICSEARCH_HOSTS: "http://elasticsearch:9200"
       GRAYLOG_WEB_LISTEN_URI: "http://0.0.0.0:80/"
-    image: intlfcstone/graylog-rancher:v2.4.3-1
+    image: intlfcstone/graylog-rancher:v2.4.3-2
     external_links:
       - ${ES_LINK}:elasticsearch
       - ${ZK_LINK}:zk
