@@ -27,10 +27,10 @@ services:
       net.core.somaxconn: "511"
   redis-commander:
     image: rediscommander/redis-commander:latest
-    build: .
-    restart: always
     environment:
     - REDIS_HOSTS=server
+    stdin_open: true
+    tty: true
     links:
     - redis-server:server
     ports:
