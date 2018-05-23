@@ -25,3 +25,15 @@ services:
       io.rancher.container.pull_image: always
     sysctls:
       net.core.somaxconn: "511"
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    build: .
+    restart: always
+    environment:
+    - REDIS_HOSTS=server
+    links:
+    - redis-server:server
+    ports:
+    - 8081:8081
+    labels:
+      io.rancher.container.pull_image: always

@@ -22,3 +22,5 @@ services:
       interval: 2000
       strategy: none
       reinitializing_timeout: 60000
+  commander:
+    scale: 1
