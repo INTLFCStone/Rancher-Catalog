@@ -1,15 +1,20 @@
 version: '2'
 services:
   mysql-lb:
-    image: rancher/lb-service-haproxy:v0.6.4
+    image: rancher/lb-service-haproxy:v0.9.1
     ports:
       - ${mysql_lb_port}:${mysql_lb_port}
   mysql-data:
-    image: busybox
     labels:
-      io.rancher.container.start_once: true
+        io.rancher.container.start_once: true
+    network_mode: none
+    image: rawmind/alpine-volume:0.0.2-1
+    environment:
+        - SERVICE_UID=999
+        - SERVICE_GID=999
+        - SERVICE_VOLUME=/var/lib/mysql
     volumes:
-      - /var/lib/mysql
+      - mysql-data-volume:/var/lib/mysql
   mysql:
     image: ${mysql_image}
     environment:
@@ -38,3 +43,8 @@ services:
       io.rancher.sidekicks: mysql-data
     volumes_from:
       - mysql-data
+
+volumes:
+  mysql-data-volume:
+    driver: ${VOLUME_DRIVER}
+    per_container: true

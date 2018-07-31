@@ -89,8 +89,8 @@
         - "no"
       default: "no"
       required: false
-    - variable: volume_driver
-      description: "Use local or nfs"
+    - variable: VOLUME_DRIVER
+      description: "Choose local or nfs."
       label: Data volume driver
       type: "enum"
       options:
