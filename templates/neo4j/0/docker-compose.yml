@@ -37,7 +37,7 @@ services:
     environment:
         - SERVICE_UID=100
         - SERVICE_GID=101
-        - SERVICE_VOLUME=/plugins
+        - SERVICE_VOLUME=/conf
     volumes:
       - config-volume:/conf
 
