@@ -1,0 +1,68 @@
+version: '2'
+services:
+  neo4j-server:
+    restart: always
+    image: neo4j:3.4.7
+    ports:
+    - ${HTTP_PORT}:7474/tcp
+    - ${BOLT_PORT}:9687/tcp
+    labels:
+      io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.container.hostname_override: container_name
+      io.rancher.sidekicks: neo4j-data,neo4j-conf,neo4j-plugins
+    volumes_from:
+      - neo4j-data
+      - neo4j-conf
+      - neo4j-plugins
+    environment:
+        - NEO4J_AUTH=${NEO4J_AUTH}
+
+  neo4j-data:
+    labels:
+      io.rancher.container.start_once: true
+    network_mode: none
+    image: rawmind/alpine-volume:0.0.2-1
+    environment:
+        - SERVICE_UID=100
+        - SERVICE_GID=101
+        - SERVICE_VOLUME=/data
+    volumes:
+      - data-volume:/data
+
+  neo4j-conf:
+    labels:
+      io.rancher.container.start_once: true
+    network_mode: none
+    image: rawmind/alpine-volume:0.0.2-1
+    environment:
+        - SERVICE_UID=100
+        - SERVICE_GID=101
+        - SERVICE_VOLUME=/plugins
+    volumes:
+      - config-volume:/conf
+
+  neo4j-plugins:
+    labels:
+      io.rancher.container.start_once: true
+    network_mode: none
+    image: rawmind/alpine-volume:0.0.2-1
+    environment:
+        - SERVICE_UID=100
+        - SERVICE_GID=101
+        - SERVICE_VOLUME=/plugins
+    volumes:
+      - plugins-volume:/plugins
+
+volumes:
+  data-volume:
+    driver: ${VOLUME_DRIVER}
+    per_container: true
+
+  config-volume:
+    driver: ${VOLUME_DRIVER}
+    per_container: true
+
+  plugins-volume:
+    driver: ${VOLUME_DRIVER}
+    per_container: true
+
