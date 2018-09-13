@@ -5,7 +5,7 @@ services:
     image: neo4j:3.4.7
     ports:
     - ${HTTP_PORT}:7474/tcp
-    - ${BOLT_PORT}:9687/tcp
+    - ${BOLT_PORT}:7687/tcp
     labels:
       io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
       io.rancher.container.hostname_override: container_name
