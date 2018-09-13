@@ -2,7 +2,7 @@ version: '2'
 services:
   neo4j-server:
     restart: always
-    image: neo4j:3.4.7
+    image: neo4j:3.4.7.1
     ports:
     - ${HTTP_PORT}:7474/tcp
     - ${BOLT_PORT}:7687/tcp
@@ -27,7 +27,7 @@ services:
         - SERVICE_GID=101
         - SERVICE_VOLUME=/var/lib/neo4j/data
     volumes:
-      - data-volume:/var/lib/neo4j
+      - data-volume:/var/lib/neo4j/data
 
   neo4j-conf:
     labels:
