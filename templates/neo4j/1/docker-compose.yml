@@ -2,7 +2,7 @@ version: '2'
 services:
   neo4j-server:
     restart: always
-    image: neo4j:3.4.7.1
+    image: neo4j:3.4.7
     ports:
     - ${HTTP_PORT}:7474/tcp
     - ${BOLT_PORT}:7687/tcp

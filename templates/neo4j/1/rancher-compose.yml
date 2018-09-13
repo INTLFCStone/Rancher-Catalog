@@ -1,6 +1,6 @@
 .catalog:
   name: "neo4j"
-  version: "3.4.7-test"
+  version: "3.4.7.2"
   description: "Neo4j 3.4 and all corresponding sidekicks"
   minimum_rancher_version: v1.0.0
   questions:
