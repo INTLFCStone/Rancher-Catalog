@@ -25,9 +25,9 @@ services:
     environment:
         - SERVICE_UID=100
         - SERVICE_GID=101
-        - SERVICE_VOLUME=/data
+        - SERVICE_VOLUME=/var/lib/neo4j/data
     volumes:
-      - data-volume:/data
+      - data-volume:/var/lib/neo4j/data
 
   neo4j-conf:
     labels:
@@ -37,9 +37,9 @@ services:
     environment:
         - SERVICE_UID=100
         - SERVICE_GID=101
-        - SERVICE_VOLUME=/conf
+        - SERVICE_VOLUME=/var/lib/neo4j/conf
     volumes:
-      - config-volume:/conf
+      - config-volume:/var/lib/neo4j/conf
 
   neo4j-plugins:
     labels:
@@ -51,7 +51,7 @@ services:
         - SERVICE_GID=101
         - SERVICE_VOLUME=/plugins
     volumes:
-      - plugins-volume:/plugins
+      - plugins-volume:/var/lib/neo4j/plugins
 
 volumes:
   data-volume:
