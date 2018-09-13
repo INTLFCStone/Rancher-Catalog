@@ -1,0 +1,36 @@
+.catalog:
+  name: "neo4j"
+  version: "3.4.7-test"
+  description: "Neo4j 3.4 and all corresponding sidekicks"
+  minimum_rancher_version: v1.0.0
+  questions:
+    - variable: HTTP_PORT
+      description: "Port to expose for web UI"
+      label: "http port"
+      required: true
+      default: 7474
+      type: "int"
+    - variable: BOLT_PORT
+      description: "Port to expose for Bolt (binary protocol) TCP connections"
+      label: "bolt port"
+      required: true
+      default: 7687
+      type: "int"
+    - variable: NEO4J_AUTH
+      description: |
+        Login to use for the web UI. Specify as 'neo4j/<password>'.
+        INFO: Specify 'none' if you want to skip authentication.
+      label: "Web Credentials"
+      required: true
+      type: string
+      default: "neo4j/your_password"
+    - variable: VOLUME_DRIVER
+      description: "Volume driver to use for persistent storage."
+      label: "Volume driver"
+      type: "enum"
+      options:
+        - "rancher-nfs"
+        - "local"
+      default: "rancher-nfs"
+      required: true
+
