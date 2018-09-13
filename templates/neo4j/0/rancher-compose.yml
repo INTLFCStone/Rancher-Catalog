@@ -14,7 +14,7 @@
       description: "Port to expose for Bolt (binary protocol) TCP connections"
       label: "bolt port"
       required: true
-      default: 4687
+      default: 7687
       type: "int"
     - variable: NEO4J_AUTH
       description: |
