@@ -9,7 +9,6 @@ For more information and related downloads for Neo4j and other Neo4j products, p
 ## Services
 
 Includes the following services:
-- Load Balancer (Optional)
 - Neo4j Server
 - Neo4j Data (sidekick to the server)
 - Neo4j Plugins (sidekick to the server)
