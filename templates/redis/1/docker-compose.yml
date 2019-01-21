@@ -47,11 +47,11 @@ services:
   redis-commander:
     image: rediscommander/redis-commander:latest
     environment:
-    - REDIS_HOSTS=server
+    - REDIS_HOSTS=redis-server
     stdin_open: true
     tty: true
-    links:
-    - redis-server:server
+#    links:
+#    - "{{ .Stack.Name }}/redis-server":server
     ports:
     - 8081:8081
     labels:
