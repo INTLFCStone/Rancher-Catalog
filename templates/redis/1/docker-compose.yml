@@ -1,0 +1,58 @@
+version: '2'
+volumes:
+  redis-data-volume:
+    driver: ${VOLUME_DRIVER}
+    per_container: true
+services:
+  redis-sentinel:
+    image: intlfcstone/rancher-redis-cluster-sentinel:4.0.7
+    environment:
+      SENTINEL_DOWN_AFTER_MILLISECONDS: '5000'
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.agent.role: environment
+      io.rancher.container.create_agent: 'true'
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    sysctls:
+      net.core.somaxconn: "511"
+  redis-server:
+    image: intlfcstone/rancher-redis-cluster-node:4.0.7
+    stdin_open: true
+    volumes_from:
+    - redis-data
+    tty: true
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      redis-server: '1'
+      io.rancher.container.pull_image: always
+      io.rancher.sidekicks: redis-data
+    sysctls:
+      net.core.somaxconn: "511"
+  redis-data:
+    image: rawmind/alpine-volume:0.0.2-1
+    environment:
+      SERVICE_GID: '999'
+      SERVICE_UID: '999'
+      SERVICE_VOLUME: /data
+    network_mode: none
+    volumes:
+    - redis-data-volume:/data
+    labels:
+      io.rancher.container.start_once: 'true'
+      io.rancher.container.hostname_override: container_name
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+    - REDIS_HOSTS=server
+    stdin_open: true
+    tty: true
+    links:
+    - redis-server:server
+    ports:
+    - 8081:8081
+    labels:
+      io.rancher.container.pull_image: always
